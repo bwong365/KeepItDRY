@@ -9,11 +9,11 @@ namespace KeepItDRY.API.Profiles
     {
         public PetDTOProfile()
         {
-            CreateMap<PetDTO, IPet>()
+            CreateMap<PetDTO, Pet>()
                 .ForMember(dest => dest.PetType,
                            opt => opt.MapFrom(p => (DAL.Entities.PetTypes)Enum.Parse(typeof(DAL.Entities.PetTypes), p.PetType, true)));
 
-            CreateMap<IPet, PetDTO>().ForMember(dest => dest.PetType, opt => opt.MapFrom(p => p.PetType.ToString()));
+            CreateMap<Pet, PetDTO>().ForMember(dest => dest.PetType, opt => opt.MapFrom(p => p.PetType.ToString()));
 
         }
     }

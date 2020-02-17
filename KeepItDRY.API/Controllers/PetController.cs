@@ -35,7 +35,7 @@ namespace KeepItDRY.Controllers
             {
                 return BadRequest("Incorrect Pet Type");
             }
-            var pet = _mapper.Map<IPet>(petDto);
+            var pet = _mapper.Map<Pet>(petDto);
             pet.Id = 0;
             int newId = _petService.Update(pet);
             petDto.Id = newId;
@@ -61,7 +61,7 @@ namespace KeepItDRY.Controllers
                 return BadRequest();
             }
             petDto.Id = Id;
-            _petService.Update(_mapper.Map<IPet>(petDto));
+            _petService.Update(_mapper.Map<Pet>(petDto));
             return NoContent();
         }
 

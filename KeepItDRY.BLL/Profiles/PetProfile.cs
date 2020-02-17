@@ -10,8 +10,8 @@ namespace KeepItDRY.BLL.Profiles
     {
         public PetProfile()
         {
-            CreateMap<DAL.Entities.Pet, IPet>();
-            CreateMap<IPet, DAL.Entities.Pet>(MemberList.Source)
+            CreateMap<DAL.Entities.Pet, Pet>();
+            CreateMap<Pet, DAL.Entities.Pet>(MemberList.Source)
                 .ForMember(dest => dest.CreatedBy, opt => opt.Ignore())
                 .ForMember(dest => dest.LastUpdatedBy, opt => opt.Ignore())
                 .ForMember(dest => dest.CreatedDate, opt => opt.Ignore())

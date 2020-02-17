@@ -2,7 +2,7 @@
 
 namespace KeepItDRY.DAL.Entities
 {
-    public partial class Pet : IEntity, IPet
+    public partial class Pet : IEntity
     {
         [Key]
         public int Id { get; set; }

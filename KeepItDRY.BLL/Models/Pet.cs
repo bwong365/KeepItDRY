@@ -2,7 +2,7 @@
 
 namespace KeepItDRY.BLL.Models
 {
-    public class Pet : IPet
+    public class Pet
     {
         public int Id { get; set; }
         public string Name { get; set; }

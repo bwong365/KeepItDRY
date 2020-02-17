@@ -19,13 +19,13 @@ namespace KeepItDRY.BLL.Services
 
         public void Delete(int Id) => _repo.Delete(Id);
 
-        public IPet Get(int Id) => _mapper.Map<IPet>(_repo.Get(Id));
+        public Pet Get(int Id) => _mapper.Map<Pet>(_repo.Get(Id));
 
-        public List<IPet> GetListByAll() => _mapper.Map<List<IPet>>(_repo.GetListByAll());
+        public List<Pet> GetListByAll() => _mapper.Map<List<Pet>>(_repo.GetListByAll());
 
         public bool Exists(int Id) => _repo.Exists(Id);
 
-        public int Update(IPet pet)
+        public int Update(Pet pet)
         {
             var petEntity = _repo.Get(pet.Id);
             if (petEntity == null)
