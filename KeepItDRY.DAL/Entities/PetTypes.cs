@@ -2,6 +2,6 @@
 {
     public enum PetTypes
     {
-        DOG, CAT, TURTLE, PLAYTPUS, CAMEL, PARROT
+        DOG, CAT, TURTLE, PLATYPUS, CAMEL, PARROT
     }
 }

@@ -10,5 +10,6 @@ namespace KeepItDRY.BLL.Services
         int Update(TEntity obj);
         void Delete(int Id);
         List<TEntity> GetListByAll();
+        bool Exists(int Id);
     }
 }

@@ -12,7 +12,7 @@ namespace KeepItDRY.DAL
 
         public Repository(KeepItDRYContext context)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _context = context ?? throw new ArgumentNullException("DbContext");
         }
 
         // Move to Unit Testing
@@ -26,6 +26,8 @@ namespace KeepItDRY.DAL
         public T Get(int Id) => _context.Find<T>(Id);
 
         public List<T> GetListByAll() => _context.Set<T>().ToList();
+
+        public bool Exists(int Id) => _context.Set<T>().Any(o => o.Id == Id);
 
         public int Update(T obj)
         {

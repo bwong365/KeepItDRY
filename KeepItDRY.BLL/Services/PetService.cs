@@ -13,8 +13,8 @@ namespace KeepItDRY.BLL.Services
 
         public PetService(IRepository<DAL.Entities.Pet> repo, IMapper mapper)
         {
-            _repo = repo ?? throw new ArgumentNullException(nameof(repo));
-            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _repo = repo ?? throw new ArgumentNullException("Pet Repository");
+            _mapper = mapper ?? throw new ArgumentNullException("AutoMapper");
         }
 
         public void Delete(int Id) => _repo.Delete(Id);
@@ -23,10 +23,19 @@ namespace KeepItDRY.BLL.Services
 
         public List<IPet> GetListByAll() => _mapper.Map<List<IPet>>(_repo.GetListByAll());
 
+        public bool Exists(int Id) => _repo.Exists(Id);
+
         public int Update(IPet pet)
         {
             var petEntity = _repo.Get(pet.Id);
-            _mapper.Map(pet, petEntity);
+            if (petEntity == null)
+            {
+                petEntity = _mapper.Map<DAL.Entities.Pet>(pet);
+            }
+            else
+            {
+                _mapper.Map(pet, petEntity);
+            }
             return _repo.Update(petEntity);
         }
     }

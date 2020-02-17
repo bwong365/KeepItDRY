@@ -8,5 +8,6 @@ namespace KeepItDRY.DAL
         int Update(TEntity obj);
         void Delete(int Id);
         List<TEntity> GetListByAll();
+        bool Exists(int Id);
     }
 }

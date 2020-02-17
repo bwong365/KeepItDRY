@@ -15,7 +15,7 @@ namespace KeepItDRY.DAL
                 .Entity<Pet>()
                 .Property(p => p.PetType)
                 .HasConversion(@enum => @enum.ToString(),
-                               @string => (PetTypes)Enum.Parse(typeof(PetTypes), @string));
+                               @string => (PetTypes)Enum.Parse(typeof(PetTypes), @string, true));
 
     }
 }
