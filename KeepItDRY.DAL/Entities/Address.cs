@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace KeepItDRY.DAL.Entities
 {
     public partial class Address : IEntity
     {
-        public int Id { get; set;  }
+        [Key]
+        public int Id { get; set; }
         public string StreetAddress { get; set; }
         public string City { get; set; }
         public string Province { get; set; }

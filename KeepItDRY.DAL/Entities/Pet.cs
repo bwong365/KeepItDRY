@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace KeepItDRY.DAL.Entities
 {
     public partial class Pet : IPet
     {
+        [Key]
         public int Id { get; set; }
+
+        [Required]
+        [MaxLength(80)]
         public string Name { get; set; }
-        public PetType PetType { get; set; }
+
+        [Required]
+        public PetTypes PetType { get; set; }
+
         public Address Address { get; set; }
     }
 }

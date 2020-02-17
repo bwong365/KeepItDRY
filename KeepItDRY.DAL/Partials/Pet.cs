@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KeepItDRY.DAL
+namespace KeepItDRY.DAL.Entities
 {
     public partial class Pet : IStandardEntity
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace KeepItDRY.DAL.Entities
+﻿namespace KeepItDRY.DAL
 {
     public interface IEntity
     {

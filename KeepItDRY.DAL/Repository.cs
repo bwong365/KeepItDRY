@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using KeepItDRY.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace KeepItDRY.DAL
@@ -10,23 +8,18 @@ namespace KeepItDRY.DAL
     {
         private readonly KeepItDRYContext _context;
 
-        public static Repository<T> CreateRepository(string connectionString) => new Repository<T>(connectionString);
-
-        public static Repository<T> CreateTestRepository() => new Repository<T>();
-
-        private Repository(string connectionString)
+        public Repository(KeepItDRYContext context)
         {
-            var sqlBuilder = new DbContextOptionsBuilder<KeepItDRYContext>();
-            sqlBuilder.UseSqlServer(connectionString);
-            _context = new KeepItDRYContext(sqlBuilder.Options);
+            _context = context;
         }
 
-        private Repository()
-        {
-            var inMemoryBuilder = new DbContextOptionsBuilder<KeepItDRYContext>();
-            inMemoryBuilder.UseInMemoryDatabase("KeepItDRY");
-            _context = new KeepItDRYContext(inMemoryBuilder.Options);
-        }
+        // Move to Unit Testing
+        //private Repository()
+        //{
+        //    var inMemoryBuilder = new DbContextOptionsBuilder<KeepItDRYContext>();
+        //    inMemoryBuilder.UseInMemoryDatabase("KeepItDRY");
+        //    _context = new KeepItDRYContext(inMemoryBuilder.Options);
+        //}
 
         public T Get(int Id) => _context.Find<T>(Id);
 

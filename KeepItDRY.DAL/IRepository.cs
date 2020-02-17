@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using KeepItDRY.DAL.Entities;
+﻿using System.Collections.Generic;
 
 namespace KeepItDRY.DAL
 {
-    public interface IRepository<TEntity> where TEntity: IEntity
+    public interface IRepository<TEntity> where TEntity : IEntity
     {
         TEntity Get(int Id);
         void Update(TEntity obj);
