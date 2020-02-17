@@ -1,6 +1,6 @@
 ﻿namespace KeepItDRY.DAL.Entities
 {
-    public interface IPet : IEntity
+    public interface IPet
     {
         public string Name { get; set; }
         public PetTypes PetType { get; set; }

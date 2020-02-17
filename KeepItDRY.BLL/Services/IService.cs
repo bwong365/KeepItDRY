@@ -4,9 +4,11 @@ using System.Text;
 
 namespace KeepItDRY.BLL.Services
 {
-    public interface IService<T>
+    public interface IService<TEntity>
     {
-        T Find(int id);
-        T FindAll();
+        TEntity Get(int Id);
+        int Update(TEntity obj);
+        void Delete(int Id);
+        List<TEntity> GetListByAll();
     }
 }

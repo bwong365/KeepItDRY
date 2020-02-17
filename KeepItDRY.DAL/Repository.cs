@@ -1,16 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using KeepItDRY.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace KeepItDRY.DAL
 {
-    public class Repository<T> where T : class, IEntity, IRepository<T>
+    public class Repository<T>: IRepository<T> where T : class, IEntity
     {
         private readonly KeepItDRYContext _context;
 
         public Repository(KeepItDRYContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         // Move to Unit Testing
@@ -25,12 +27,13 @@ namespace KeepItDRY.DAL
 
         public List<T> GetListByAll() => _context.Set<T>().ToList();
 
-        public void Update(T obj)
+        public int Update(T obj)
         {
             _context.Entry(obj).State = (obj.Id <= 0) ? EntityState.Added : EntityState.Modified;
             try
             {
                 _context.SaveChanges();
+                return obj.Id;
             }
             catch
             {

@@ -2,10 +2,10 @@
 
 namespace KeepItDRY.DAL
 {
-    public interface IRepository<TEntity> where TEntity : IEntity
+    public interface IRepository<TEntity>
     {
         TEntity Get(int Id);
-        void Update(TEntity obj);
+        int Update(TEntity obj);
         void Delete(int Id);
         List<TEntity> GetListByAll();
     }

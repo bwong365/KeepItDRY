@@ -1,7 +1,7 @@
-﻿namespace KeepItDRY.DAL
+﻿namespace KeepItDRY.DAL.Entities
 {
     public interface IEntity
     {
-        public int Id { get; set; }
+        int Id { get; set; }
     }
 }

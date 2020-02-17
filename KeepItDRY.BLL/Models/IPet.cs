@@ -4,16 +4,11 @@ using System.Text;
 
 namespace KeepItDRY.BLL.Models
 {
-    public enum PetType
-    {
-        DOG, CAT, TURTLE, PLAYTPUS, CAMEL, PARROT
-    }
-
     public interface IPet
     {
-        public int Id { get; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public PetType PetType { get; set; }
+        public PetTypes PetType { get; set; }
         public Address Address { get; set; }
     }
 }
