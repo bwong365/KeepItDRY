@@ -4,7 +4,9 @@ using System.Text;
 
 namespace KeepItDRY.BLL.Services
 {
-    class IService
+    public interface IService<T>
     {
+        T Find(int id);
+        T FindAll();
     }
 }

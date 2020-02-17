@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace KeepItDRY.BLL.Models
+namespace KeepItDRY.DAL.Entities
 {
     public enum PetType
     {
         DOG, CAT, TURTLE, PLAYTPUS, CAMEL, PARROT
     }
 
-    public interface IPet
+    public interface IPet : IEntity
     {
-        public int Id { get; }
         public string Name { get; set; }
         public PetType PetType { get; set; }
         public Address Address { get; set; }
