@@ -42,7 +42,7 @@ namespace KeepItDRY.Controllers
             pet.OwnerId = ownerId;
             int newId = _petService.Update(pet);
             petDto.Id = newId;
-            return CreatedAtRoute("GetPetForOwner", new { ownerId, Id = newId }, petDto);
+            return CreatedAtRoute("GetPetForOwner", new { ownerId, petId = newId }, petDto);
         }
 
         [HttpGet("{petId:int}", Name="GetPetForOwner")]

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using KeepItDRY.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace KeepItDRY.DAL.Repositories
 {
@@ -16,5 +17,7 @@ namespace KeepItDRY.DAL.Repositories
                                                                     .Where(o => o.Id == ownerId)
                                                                     .SelectMany(o => o.Pets)
                                                                     .Any(p => p.Id == petId);
+
+        public Owner GetOwnerWithPets(int ownerId) => _context.Set<Owner>().Where(o => o.Id == ownerId).Include(o => o.Pets).FirstOrDefault();
     }
 }

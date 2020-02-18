@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AutoMapper;
-using KeepItDRY.DAL.Entities;
+﻿using AutoMapper;
+using KeepItDRY.BLL.Models;
 
 namespace KeepItDRY.BLL.Profiles
 {
@@ -10,7 +7,14 @@ namespace KeepItDRY.BLL.Profiles
     {
         public OwnerProfile()
         {
-            CreateMap<Owner, Owner>();
+            CreateMap<DAL.Entities.Owner, Owner>();
+
+
+            CreateMap<Owner, DAL.Entities.Owner>(MemberList.Source)
+                .ForMember(dest => dest.CreatedBy, opt => opt.Ignore())
+                .ForMember(dest => dest.LastUpdatedBy, opt => opt.Ignore())
+                .ForMember(dest => dest.CreatedDate, opt => opt.Ignore())
+                .ForMember(dest => dest.LastUpdated, opt => opt.Ignore());
         }
     }
 }
