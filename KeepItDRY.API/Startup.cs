@@ -31,6 +31,10 @@ namespace KeepItDRY
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddHttpClient<WeatherHttpService>(c =>
+            {
+                c.BaseAddress = new Uri("http://dataservice.accuweather.com/");
+            });
             services.AddScoped<IPetRepository, PetRepository>();
             services.AddScoped<IOwnerRepository, OwnerRepository>();
             services.AddScoped<IPetService, PetService>();
