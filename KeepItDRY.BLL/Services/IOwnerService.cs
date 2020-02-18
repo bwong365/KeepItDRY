@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using KeepItDRY.DAL.Entities;
 
-namespace KeepItDRY.DAL.Repositories
+namespace KeepItDRY.BLL.Services
 {
-    public interface IOwnerRepository : IRepository<Owner> {
+    public interface IOwnerService : IService<Owner> {
         List<Pet> GetAllPets(int ownerId);
         bool OwnerOwnsPet(int ownerId, int petId);
     }

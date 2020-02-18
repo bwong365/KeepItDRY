@@ -15,6 +15,7 @@ namespace KeepItDRY.API.DTO
         [Required]
         public string PetType { get; set; }
         public Address Address { get; set; }
+        public int OwnerId { get; set; }
 
         public bool HasValidPetType() => Enum.TryParse<DAL.Entities.PetTypes>(PetType, true, out _);
 

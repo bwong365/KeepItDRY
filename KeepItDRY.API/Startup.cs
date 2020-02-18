@@ -34,6 +34,7 @@ namespace KeepItDRY
             services.AddScoped<IPetRepository, PetRepository>();
             services.AddScoped<IOwnerRepository, OwnerRepository>();
             services.AddScoped<IPetService, PetService>();
+            services.AddScoped<IOwnerService, OwnerService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddDbContext<KeepItDRYContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Database")));
         }

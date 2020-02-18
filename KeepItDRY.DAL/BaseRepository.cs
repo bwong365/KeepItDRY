@@ -23,7 +23,7 @@ namespace KeepItDRY.DAL
         //    _context = new KeepItDRYContext(inMemoryBuilder.Options);
         //}
 
-        public T Get(int Id) => _context.Find<T>(Id);
+        public T GetById(int Id) => _context.Find<T>(Id);
 
         public List<T> GetListByAll() => _context.Set<T>().ToList();
 
@@ -46,7 +46,7 @@ namespace KeepItDRY.DAL
 
         public void Delete(int Id)
         {
-            T obj = Get(Id);
+            T obj = GetById(Id);
             var prevState = _context.Entry(obj).State;
             _context.Entry(obj).State = EntityState.Deleted;
             try

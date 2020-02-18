@@ -8,5 +8,6 @@ namespace KeepItDRY.BLL.Models
         public string Name { get; set; }
         public PetTypes PetType { get; set; }
         public Address Address { get; set; }
+        public int OwnerId { get; set; }
     }
 }

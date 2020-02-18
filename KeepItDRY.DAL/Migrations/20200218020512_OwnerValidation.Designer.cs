@@ -4,14 +4,16 @@ using KeepItDRY.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KeepItDRY.DAL.Migrations
 {
     [DbContext(typeof(KeepItDRYContext))]
-    partial class KeepItDRYContextModelSnapshot : ModelSnapshot
+    [Migration("20200218020512_OwnerValidation")]
+    partial class OwnerValidation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

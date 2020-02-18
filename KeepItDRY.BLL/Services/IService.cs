@@ -6,7 +6,7 @@ namespace KeepItDRY.BLL.Services
 {
     public interface IService<TEntity>
     {
-        TEntity Get(int Id);
+        TEntity GetById(int Id);
         int Update(TEntity obj);
         void Delete(int Id);
         List<TEntity> GetListByAll();

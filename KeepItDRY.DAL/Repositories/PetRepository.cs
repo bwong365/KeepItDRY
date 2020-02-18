@@ -1,4 +1,5 @@
-﻿using KeepItDRY.DAL.Entities;
+﻿using System.Collections.Generic;
+using KeepItDRY.DAL.Entities;
 
 namespace KeepItDRY.DAL.Repositories
 {

@@ -4,14 +4,16 @@ using KeepItDRY.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KeepItDRY.DAL.Migrations
 {
     [DbContext(typeof(KeepItDRYContext))]
-    partial class KeepItDRYContextModelSnapshot : ModelSnapshot
+    [Migration("20200218010031_Owners")]
+    partial class Owners
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,14 +74,10 @@ namespace KeepItDRY.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(80)")
-                        .HasMaxLength(80);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(80)")
-                        .HasMaxLength(80);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("LastUpdated")
                         .HasColumnType("datetime2");
@@ -142,7 +140,7 @@ namespace KeepItDRY.DAL.Migrations
                         .HasForeignKey("AddressId");
 
                     b.HasOne("KeepItDRY.DAL.Entities.Owner", "Owner")
-                        .WithMany("Pets")
+                        .WithMany()
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

@@ -19,7 +19,7 @@ namespace KeepItDRY.BLL.Services
 
         public void Delete(int Id) => _repo.Delete(Id);
 
-        public Pet Get(int Id) => _mapper.Map<Pet>(_repo.Get(Id));
+        public Pet GetById(int Id) => _mapper.Map<Pet>(_repo.GetById(Id));
 
         public List<Pet> GetListByAll() => _mapper.Map<List<Pet>>(_repo.GetListByAll());
 
@@ -27,7 +27,7 @@ namespace KeepItDRY.BLL.Services
 
         public int Update(Pet pet)
         {
-            var petEntity = _repo.Get(pet.Id);
+            var petEntity = _repo.GetById(pet.Id);
             if (petEntity == null)
             {
                 petEntity = _mapper.Map<DAL.Entities.Pet>(pet);

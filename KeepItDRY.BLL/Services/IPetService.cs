@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using KeepItDRY.BLL.Models;
+﻿using KeepItDRY.BLL.Models;
 
 namespace KeepItDRY.BLL.Services
 {
