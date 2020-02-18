@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KeepItDRY.DAL
 {
-    public class Repository<T>: IRepository<T> where T : class, IEntity
+    public abstract class BaseRepository<T>: IRepository<T> where T : class, IEntity
     {
-        private readonly KeepItDRYContext _context;
+        private protected readonly KeepItDRYContext _context;
 
-        public Repository(KeepItDRYContext context)
+        public BaseRepository(KeepItDRYContext context)
         {
             _context = context ?? throw new ArgumentNullException("DbContext");
         }

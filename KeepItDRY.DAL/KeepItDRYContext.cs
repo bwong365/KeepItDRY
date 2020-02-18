@@ -6,16 +6,19 @@ namespace KeepItDRY.DAL
 {
     public partial class KeepItDRYContext : DbContext
     {
-        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Owner> Owners { get; set; }
         public DbSet<Pet> Pets { get; set; }
 
         public KeepItDRYContext(DbContextOptions options) : base(options) { }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) => modelBuilder
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
                 .Entity<Pet>()
                 .Property(p => p.PetType)
                 .HasConversion(@enum => @enum.ToString(),
-                               @string => (PetTypes)Enum.Parse(typeof(PetTypes), @string, true));
-
+                @string => (PetTypes)Enum.Parse(typeof(PetTypes), @string, true));
+            modelBuilder.Entity<Address>().ToTable("Addresses");
+        }
     }
 }

@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using AutoMapper;
 using KeepItDRY.BLL.Models;
-using KeepItDRY.DAL;
+using KeepItDRY.DAL.Repositories;
 
 namespace KeepItDRY.BLL.Services
 {
     public class PetService : IPetService
     {
-        private readonly IRepository<DAL.Entities.Pet> _repo;
+        private readonly IPetRepository _repo;
         private readonly IMapper _mapper;
 
-        public PetService(IRepository<DAL.Entities.Pet> repo, IMapper mapper)
+        public PetService(IPetRepository repo, IMapper mapper)
         {
             _repo = repo ?? throw new ArgumentNullException("Pet Repository");
             _mapper = mapper ?? throw new ArgumentNullException("AutoMapper");

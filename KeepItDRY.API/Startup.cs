@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using KeepItDRY.BLL.Services;
 using KeepItDRY.DAL;
+using KeepItDRY.DAL.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,7 +31,8 @@ namespace KeepItDRY
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IPetRepository, PetRepository>();
+            services.AddScoped<IOwnerRepository, OwnerRepository>();
             services.AddScoped<IPetService, PetService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddDbContext<KeepItDRYContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Database")));
