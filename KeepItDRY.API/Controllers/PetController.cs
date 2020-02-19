@@ -11,22 +11,22 @@ namespace KeepItDRY.Controllers
 {
     [ApiController]
     [Route("api/owners/{ownerId}/pets")]
-    public class OwnerPetController : ControllerBase
+    public class PetController : ControllerBase
     {
         private readonly IPetService _petService;
         private readonly IOwnerService _ownerService;
-        private readonly WeatherHttpService _weatherHttp;
+        private readonly IWeatherService _weatherService;
         private readonly IMapper _mapper;
 
-        public OwnerPetController(IPetService petService,
+        public PetController(IPetService petService,
                                   IMapper mapper,
                                   IOwnerService ownerService,
-                                  WeatherHttpService weatherHttp)
+                                  IWeatherService weatherService)
         {
-            _petService = petService ?? throw new ArgumentNullException(nameof(petService));
-            _ownerService = ownerService ?? throw new ArgumentNullException(nameof(ownerService));
-            _weatherHttp = weatherHttp ?? throw new ArgumentNullException(nameof(weatherHttp));
-            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _petService = petService;
+            _ownerService = ownerService;
+            _weatherService = weatherService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -91,16 +91,17 @@ namespace KeepItDRY.Controllers
         }
 
         [HttpGet("{petId:int}/status")]
-        public async Task<ActionResult> GetPetStatus(int ownerId, int petId)
+        public async Task<ActionResult<WeatherStatus>> GetPetStatus(int ownerId, int petId)
         {
             if (!_ownerService.OwnerOwnsPet(ownerId, petId))
             {
                 return BadRequest();
-                ;
             }
-            return Ok(await _weatherHttp.FetchWeatherForPet());
-            //_weatherHttp.FetchWeatherForPet();
-            //return Ok();
+            var weatherStatus = await _weatherService.FetchWeatherForPet(petId);
+            if (weatherStatus == null) {
+                return NotFound();
+            }
+            return weatherStatus;
         }
     }
 }

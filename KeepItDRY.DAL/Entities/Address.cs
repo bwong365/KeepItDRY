@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KeepItDRY.DAL.Entities
 {
@@ -6,10 +8,15 @@ namespace KeepItDRY.DAL.Entities
     {
         [Key]
         public int Id { get; set; }
-        public string StreetAddress { get; set; }
         public string City { get; set; }
         public string Province { get; set; }
+        [Required]
         public string PostalCode { get; set; }
-        public string Country { get; set; }
+        public Owner Owner { get; set; }
+        public List<Pet> Pets { get; set; }
+
+        [ForeignKey("Owner")]
+        [Required]
+        public int OwnerId { get; set; }
     }
 }

@@ -31,11 +31,14 @@ namespace KeepItDRY
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddHttpClient<WeatherHttpService>();
-            services.AddScoped<IPetRepository, PetRepository>();
-            services.AddScoped<IOwnerRepository, OwnerRepository>();
             services.AddScoped<IPetService, PetService>();
+            services.AddScoped<IPetRepository, PetRepository>();
             services.AddScoped<IOwnerService, OwnerService>();
+            services.AddScoped<IOwnerRepository, OwnerRepository>();
+            services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IWeatherService, WeatherService>();
+            services.AddHttpClient<WeatherHttpService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddDbContext<KeepItDRYContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Database")));
         }

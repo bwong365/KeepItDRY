@@ -22,5 +22,8 @@ namespace KeepItDRY.DAL.Entities
         [Required]
         [ForeignKey("Owner")]
         public int OwnerId { get; set; }
+
+        [ForeignKey("Address")]
+        public int? AddressId { get; set; }
     }
 }

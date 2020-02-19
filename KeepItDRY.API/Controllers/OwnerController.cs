@@ -59,7 +59,6 @@ namespace KeepItDRY.API.Controllers
             {
                 return BadRequest();
             }
-
             owner.Id = id;
             _ownerService.Update(owner);
             return NoContent();
@@ -72,7 +71,6 @@ namespace KeepItDRY.API.Controllers
             {
                 return BadRequest();
             }
-
             _ownerService.Delete(id);
             return NoContent();
         }
